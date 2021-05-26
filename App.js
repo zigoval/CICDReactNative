@@ -2,7 +2,6 @@ import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import React, { useEffect, useState } from 'react';
 import Crashes from 'appcenter-crashes';
-import Analytics from 'appcenter-analytics';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
@@ -72,7 +71,7 @@ const App = () => {
       />
       <TextInput
         placeholder="For how long (in years) will you save?"
-        style={styles.textBox}
+        style={[styles.textBox, styles.marginBottom]}
         keyboardType="decimal-pad"
         onChangeText={value => setTimeInYears(value)}
       />
@@ -80,10 +79,10 @@ const App = () => {
         title="Calculate inflation"
         onPress={() => {
           calculate();
-          Analytics.trackEvent('calculate_inflation', {
-            Internet: 'WiFi',
-            GPS: 'Off',
-          });
+          // Analytics.trackEvent('calculate_inflation', {
+          //   Internet: 'WiFi',
+          //   GPS: 'Off',
+          // });
         }}
       />
       <Text style={styles.label}>
@@ -124,6 +123,9 @@ const styles = StyleSheet.create({
   },
   body: {
     backgroundColor: Colors.white,
+  },
+  marginBottom: {
+    marginBottom: 15,
   },
   sectionContainer: {
     marginTop: 32,
